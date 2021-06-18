@@ -6,13 +6,27 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { StoreComponent } from './components/store/store.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CartComponent } from './components/cart/cart.component';
+import { UserOrdersComponent } from './components/user-orders/user-orders.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    StoreComponent,
+    FilterComponent,
+    ProductCardComponent,
+    CartComponent,
+    UserOrdersComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
