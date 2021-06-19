@@ -1,8 +1,10 @@
 <div class="text-center mt-4">
-  <form class="form-signin border rounded">
+  <form class="form-signin border rounded" (submit)="signup($event)">
     <img src="assets/cart.png" alt="" class="mb-4" width="72" height="72" />
     <h1 class="h3 mb-3 font-weight-normal">Create Your E-shop Account</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
+
+    <p *ngIf="error" class="alert alert-danger">{{ error }}</p>
+    <p *ngIf="success" class="alert alert-success">{{ success }}</p>
 
     <!-- name -->
     <input
@@ -10,15 +12,19 @@
       id="name"
       class="form-control mb-2"
       placeholder="Your Name"
+      name="name"
       required
       autofocus
     />
     <!-- email -->
+    <label for="inputEmail" class="sr-only">Email address</label>
+
     <input
       type="email"
       id="inputEmail"
       class="form-control"
       placeholder="Email address"
+      name="email"
       required
       autofocus
     />
@@ -30,6 +36,7 @@
       id="inputPassword"
       class="form-control"
       placeholder="Password"
+      name="password"
       required
     />
 
@@ -38,6 +45,7 @@
       id="phone"
       class="form-control"
       placeholder="Phone"
+      name="phone"
       required
     />
     <!-- <div class="checkbox mb-3">
@@ -49,6 +57,6 @@
     >
       Sign in
     </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
   </form>
 </div>
