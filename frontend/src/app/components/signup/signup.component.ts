@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
 
   createUser(user: User, form: HTMLFormElement) {
     this.userService.signup(user).subscribe({
-      next: (result: { message: string }) => {
+      next: (result) => {
         // console.log(result);
         this.success = result.message;
         this.error = undefined;
