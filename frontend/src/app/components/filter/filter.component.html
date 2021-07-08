@@ -2,39 +2,22 @@
   <div>
     <h6>Category</h6>
     <hr />
-    <div class="custom-control custom-radio">
+    <div
+      *ngFor="let category of categories; index as i"
+      class="custom-control custom-radio"
+    >
       <input
         type="radio"
-        id="customRadio1"
+        id="a{{ i }}"
         name="category"
         class="custom-control-input m-2"
+        value="{{ category._id }}"
       />
-      <label class="custom-control-label" for="customRadio1"
-        >Toggle this custom radio</label
-      >
-    </div>
-
-    <div class="custom-control custom-radio">
-      <input
-        type="radio"
-        id="customRadio1"
-        name="category"
-        class="custom-control-input m-2"
-      />
-      <label class="custom-control-label" for="customRadio1"
-        >Toggle this custom radio</label
-      >
-    </div>
-
-    <div class="custom-control custom-radio">
-      <input
-        type="radio"
-        id="customRadio1"
-        name="category"
-        class="custom-control-input m-2"
-      />
-      <label class="custom-control-label" for="customRadio1"
-        >Toggle this custom radio</label
+      <label
+        (click)="categorySelected(category._id)"
+        class="custom-control-label"
+        for="a{{ i }}"
+        >{{ category.name }}</label
       >
     </div>
   </div>
