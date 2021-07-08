@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -11,9 +12,13 @@ export class LoginComponent implements OnInit {
   form: HTMLFormElement;
   error: string;
   success: string;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  navigateToHomepage() {
+    this.router.navigate(['']);
+  }
 
   login(event: Event) {
     event.preventDefault();
@@ -38,6 +43,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         this.error = undefined;
         this.success = res.message;
+        this.navigateToHomepage();
       },
       error: (errResp: HttpErrorResponse) => {
         console.log(errResp.error);
