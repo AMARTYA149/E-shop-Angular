@@ -7,7 +7,7 @@
   <div class="card-body">
     <h6 class="card-title">{{ product.name }}</h6>
     <p class="card-text">₹{{ product.price }}</p>
-    <a href="#" class="btn-sm btn-outline-primary float-right btn"
+    <a class="btn-sm btn-outline-primary float-right btn" (click)="addToCart()"
       >Add To Cart</a
     >
   </div>
