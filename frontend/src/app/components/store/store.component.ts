@@ -19,7 +19,6 @@ export class StoreComponent implements OnInit {
     this._productService.getAllProducts().subscribe({
       next: (product) => {
         this.products = product;
-        console.log(this.products);
       },
       error: (err: any) => {
         console.log(err);

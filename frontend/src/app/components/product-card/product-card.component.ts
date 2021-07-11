@@ -15,7 +15,6 @@ export class ProductCardComponent implements OnInit {
   constructor(private _cartService: CartService) {}
 
   ngOnInit(): void {
-    console.log(this.product);
     this._cartService.cartObservable.subscribe({
       next: (cart) => {
         this.quantity = this._cartService.getQuantity(this.product);
@@ -24,7 +23,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart() {
-    console.log(this.product);
     this._cartService.addToCart(this.product);
   }
 

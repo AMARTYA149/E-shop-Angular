@@ -8,12 +8,12 @@ import { Product } from '../../models/product';
   providedIn: 'root',
 })
 export class ProductService {
-  getAllProduct = 'http://localhost/api/products';
+  getAllProductUrl = 'http://localhost/api/products';
   constructor(private http: HttpClient, private _userService: UserService) {}
 
   getAllProducts() {
     return this.http
-      .get(this.getAllProduct, {
+      .get(this.getAllProductUrl, {
         headers: {
           authorization: this._userService.getToken(),
         },
@@ -21,6 +21,20 @@ export class ProductService {
       .pipe(
         map((result: { count: number; products: Product[] }) => {
           return result.products;
+        })
+      );
+  }
+
+  getProductById(id: string) {
+    return this.http
+      .get(`${this.getAllProductUrl}/${id}`, {
+        headers: {
+          authorization: this._userService.getToken(),
+        },
+      })
+      .pipe(
+        map((result) => {
+          return <Product>result;
         })
       );
   }
