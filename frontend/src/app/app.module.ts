@@ -14,6 +14,7 @@ import { UserOrdersComponent } from './components/user-orders/user-orders.compon
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserOrdersComponent,
     LoginComponent,
     SignupComponent,
+    ProductQuantityComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
