@@ -28,7 +28,10 @@
           />
         </td>
         <td>{{ item.product.name }}</td>
-        <td>{{ item.quantity }}</td>
+        <td>
+          <app-product-quantity [product]="item.product">
+          </app-product-quantity>
+        </td>
         <td>₹ {{ item.product.price }}</td>
         <td>₹ {{ item.quantity * item.product.price }}</td>
       </tr>
@@ -52,12 +55,7 @@
       <h1 class="display-4">Cart is Empty</h1>
       <p class="lead">Go to Store to add items in cart</p>
       <hr class="my-4" />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-        repudiandae vitae assumenda ad sequi dolor error eveniet nostrum
-        pariatur officiis, incidunt dignissimos praesentium iste fugit quo, sint
-        unde nihil odio!
-      </p>
+      <p>Store full of awesome stuffs are waiting for you!!!</p>
     </div>
   </div>
 </ng-template>
