@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +10,34 @@ import { CartService } from 'src/app/services/cart/cart.service';
 })
 export class HeaderComponent implements OnInit {
   numberOfItems: number = 0;
-  constructor(private _cartService: CartService) {}
+  isLoggedIn = false;
+  constructor(
+    private _cartService: CartService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this._cartService.cartObservable.subscribe({
       next: (cart) => {
-        // console.log(cart);
         this.numberOfItems = Object.keys(cart).length;
       },
     });
+
+    this.userService.loginObservable.subscribe({
+      next: () => {
+        let token = this.userService.getToken();
+        if (token != '') {
+          this.isLoggedIn = true;
+        } else {
+          this.isLoggedIn = false;
+        }
+      },
+    });
+  }
+
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['login']);
   }
 }
