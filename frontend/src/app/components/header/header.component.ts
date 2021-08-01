@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class HeaderComponent implements OnInit {
   numberOfItems: number = 0;
   isLoggedIn = false;
-  isAdmin: boolean = false;
+  isAdmin$;
   constructor(
     private _cartService: CartService,
     private userService: UserService,
@@ -40,9 +40,7 @@ export class HeaderComponent implements OnInit {
 
   checkAdmin() {
     //check if user is admin or not
-    this.userService.isAdmin().subscribe((isAdmin) => {
-      this.isAdmin = isAdmin;
-    });
+    this.isAdmin$ = this.userService.isAdmin();
   }
 
   logout() {
