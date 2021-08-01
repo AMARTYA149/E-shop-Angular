@@ -11,9 +11,23 @@ export class ProductService {
   getAllProductUrl = 'http://localhost/api/products';
   constructor(private http: HttpClient, private _userService: UserService) {}
 
-  getAllProducts() {
+  getAllProducts(params) {
+    let query = new URLSearchParams();
+
+    if (params['category']) {
+      query.append('category', params['category']);
+    }
+
+    if (params['min']) {
+      query.append('min', params['min']);
+    }
+
+    if (params['max']) {
+      query.append('max', params['max']);
+    }
+
     return this.http
-      .get(this.getAllProductUrl, {
+      .get(`${this.getAllProductUrl}?${query.toString()}`, {
         headers: {
           authorization: this._userService.getToken(),
         },
