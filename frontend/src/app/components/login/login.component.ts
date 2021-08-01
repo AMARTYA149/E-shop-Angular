@@ -36,11 +36,8 @@ export class LoginComponent implements OnInit {
       password,
     };
 
-    console.log(credentials);
-
     this.userService.login(credentials).subscribe({
       next: (res) => {
-        console.log(res);
         this.error = undefined;
         this.success = res.message;
         this.navigateToHomepage();

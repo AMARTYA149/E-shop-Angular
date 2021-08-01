@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
   private userSignupUrl = 'http://localhost/api/users/signup';
   private userLoginUrl = 'http://localhost/api/users/login';
+  private isAdminUrl = 'http://localhost/api/users/is-admin';
+
   private _loginObservable: BehaviorSubject<Object>;
 
   constructor(private http: HttpClient) {
@@ -31,6 +33,17 @@ export class UserService {
 
   getToken() {
     return localStorage.getItem('token') ? localStorage.getItem('token') : '';
+  }
+
+  isAdmin() {
+    let headers = new HttpHeaders({
+      authorization: this.getToken(),
+    });
+    return this.http.get(this.isAdminUrl, { headers }).pipe(
+      map((result) => {
+        return <boolean>result;
+      })
+    );
   }
 
   signup(user: User) {
