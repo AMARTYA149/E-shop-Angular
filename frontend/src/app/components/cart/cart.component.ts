@@ -1,9 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { forkJoin, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart/cart.service';
+import {
+  OrderInfo,
+  OrderService,
+  ProductInfo,
+} from 'src/app/services/order/order.service';
 import { ProductService } from 'src/app/services/product/product.service';
 
 interface CartItem {
@@ -26,7 +32,9 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(
     private _cartService: CartService,
     private _productService: ProductService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private orderService: OrderService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -88,7 +96,34 @@ export class CartComponent implements OnInit, OnDestroy {
       .value;
     let address = (<HTMLInputElement>form.elements.namedItem('address')).value;
 
-    console.log({ firstName, lastName, address });
+    let orderInfo: OrderInfo;
+    let productInfos: ProductInfo[] = [];
+    this.cartItems.forEach((e) => {
+      productInfos.push({
+        price: e.product.price,
+        productId: e.product._id,
+        quantity: e.quantity,
+      });
+    });
+
+    orderInfo = {
+      address,
+      firstName,
+      lastName,
+      products: productInfos,
+    };
+    console.log({ orderInfo });
+
+    this.orderService.placeOrder(orderInfo).subscribe({
+      next: (response) => {
+        this.modalRef.hide();
+        this._cartService.clearCart();
+        this.router.navigate(['orders']);
+      },
+      error: (err) => {
+        console.log('err', 'Cant place order...');
+      },
+    });
     return false;
   }
 }

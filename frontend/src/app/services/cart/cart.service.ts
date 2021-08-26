@@ -64,5 +64,8 @@ export class CartService {
     this._cartObservable.next(this.cart);
   }
 
-  removeFromCart(product: Product) {}
+  clearCart() {
+    localStorage.removeItem('cart');
+    this._cartObservable.next({});
+  }
 }

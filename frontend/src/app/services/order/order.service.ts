@@ -21,13 +21,13 @@ export class OrderService {
   }
 }
 
-interface ProductInfo {
+export interface ProductInfo {
   productId: string;
   quantity: number;
   price: number;
 }
 
-interface OrderInfo {
+export interface OrderInfo {
   firstName: string;
   lastName: string;
   address: string;
