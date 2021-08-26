@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { forkJoin, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from 'src/app/models/product';
@@ -20,10 +21,12 @@ export class CartComponent implements OnInit, OnDestroy {
   cartItems: CartItem[] = [];
   total: number = 0;
   cartSubscription: Subscription;
+  modalRef: BsModalRef;
 
   constructor(
     private _cartService: CartService,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
@@ -66,5 +69,26 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       },
     });
+  }
+
+  // open modal
+  openModal(form) {
+    this.modalRef = this.modalService.show(form, {
+      animated: true,
+      class: 'modal-lg',
+    });
+  }
+
+  // checkout
+  checkOut(event: Event, form: HTMLFormElement) {
+    event.preventDefault();
+    let firstName = (<HTMLInputElement>form.elements.namedItem('firstName'))
+      .value;
+    let lastName = (<HTMLInputElement>form.elements.namedItem('lastName'))
+      .value;
+    let address = (<HTMLInputElement>form.elements.namedItem('address')).value;
+
+    console.log({ firstName, lastName, address });
+    return false;
   }
 }
