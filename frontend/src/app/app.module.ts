@@ -16,6 +16,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     LoginComponent,
     SignupComponent,
     ProductQuantityComponent,
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,

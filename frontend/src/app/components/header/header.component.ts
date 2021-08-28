@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -11,12 +11,22 @@ import { UserService } from 'src/app/services/user/user.service';
 export class HeaderComponent implements OnInit {
   numberOfItems: number = 0;
   isLoggedIn = false;
+  isAdminUrl = false;
   isAdmin$;
   constructor(
     private _cartService: CartService,
     private userService: UserService,
     private router: Router
-  ) {}
+  ) {
+    router.events.subscribe({
+      next: (event) => {
+        if (event instanceof NavigationStart) {
+          let url = (<NavigationStart>event).url;
+          this.isAdminUrl = url.includes('admin');
+        }
+      },
+    });
+  }
 
   ngOnInit(): void {
     this._cartService.cartObservable.subscribe({
