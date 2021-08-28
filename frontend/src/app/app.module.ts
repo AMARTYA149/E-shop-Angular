@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
+import { AdminNewProductComponent } from './components/admin/admin-new-product/admin-new-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +36,10 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
     SignupComponent,
     ProductQuantityComponent,
     AdminHomeComponent,
+    AdminDashboardComponent,
+    AdminOrdersComponent,
+    AdminProductsComponent,
+    AdminNewProductComponent,
   ],
   imports: [
     BrowserModule,
