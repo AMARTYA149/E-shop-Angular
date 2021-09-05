@@ -8,7 +8,7 @@ import { Product } from '../../models/product';
   providedIn: 'root',
 })
 export class ProductService {
-  getAllProductUrl = 'http://localhost/api/products';
+  productUrl = 'http://localhost/api/products';
   constructor(private http: HttpClient, private _userService: UserService) {}
 
   getAllProducts(params) {
@@ -27,7 +27,7 @@ export class ProductService {
     }
 
     return this.http
-      .get(`${this.getAllProductUrl}?${query.toString()}`, {
+      .get(`${this.productUrl}?${query.toString()}`, {
         headers: {
           authorization: this._userService.getToken(),
         },
@@ -39,9 +39,10 @@ export class ProductService {
       );
   }
 
+  //get product by id
   getProductById(id: string) {
     return this.http
-      .get(`${this.getAllProductUrl}/${id}`, {
+      .get(`${this.productUrl}/${id}`, {
         headers: {
           authorization: this._userService.getToken(),
         },
@@ -49,6 +50,20 @@ export class ProductService {
       .pipe(
         map((result) => {
           return <Product>result;
+        })
+      );
+  }
+
+  saveProduct(data: FormData) {
+    return this.http
+      .post(this.productUrl, data, {
+        headers: {
+          authorization: this._userService.getToken(),
+        },
+      })
+      .pipe(
+        map((result: { message: string; product: Product }) => {
+          return <Product>result.product;
         })
       );
   }
