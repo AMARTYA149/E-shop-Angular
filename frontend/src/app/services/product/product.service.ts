@@ -67,4 +67,13 @@ export class ProductService {
         })
       );
   }
+
+  updateProduct(data) {
+    console.log(data);
+    return this.http.patch(this.productUrl, data, {
+      headers: {
+        authorization: this._userService.getToken(),
+      },
+    });
+  }
 }
