@@ -27,7 +27,7 @@
         <td>{{ order.product.name }}</td>
 
         <td>{{ order.quantity }}</td>
-        <td>{{ order.quantity * order.price }}</td>
+        <td>{{ order.quantity * order.price | currency : 'INR' }}</td>
         <td>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label
@@ -90,12 +90,12 @@
 
         <tr>
           <th>Unit Price</th>
-          <td>{{ selectedOrder?.price }}</td>
+          <td>{{ selectedOrder?.price | currency : 'INR' }}</td>
         </tr>
 
         <tr>
           <th>Total Amount</th>
-          <td>{{ selectedOrder?.price * selectedOrder?.quantity }}</td>
+          <td>{{ selectedOrder?.price * selectedOrder?.quantity | currency : 'INR' }}</td>
         </tr>
 
         <tr>
