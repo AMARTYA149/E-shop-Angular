@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { Order } from 'src/app/models/order';
 import { OrderService } from 'src/app/services/order/order.service';
@@ -10,8 +11,13 @@ import { OrderService } from 'src/app/services/order/order.service';
 })
 export class AdminOrdersComponent implements OnInit {
   orders$: Observable<Order[]>;
+  modelRef: BsModalRef;
+  selectedOrder: Order;
 
-  constructor(private orderService: OrderService) {}
+  constructor(
+    private orderService: OrderService,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit(): void {
     this.collectOrders();
@@ -32,5 +38,14 @@ export class AdminOrdersComponent implements OnInit {
         order.status = status;
       },
     });
+  }
+
+  orderDetails(order: Order, table) {
+    this.selectedOrder = order;
+    this.modelRef = this.modalService.show(table);
+  }
+
+  close() {
+    this.modelRef.hide();
   }
 }
