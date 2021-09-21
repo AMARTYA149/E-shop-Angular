@@ -8,8 +8,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class OrderService {
-  orderPlaceURL = 'http://localhost/api/orders';
-  userAllOrdersUrl = 'http://localhost/api/orders';
+  orderURL = 'http://localhost/api/orders';
 
   constructor(
     private httpClient: HttpClient,
@@ -21,19 +20,36 @@ export class OrderService {
       authorization: this.userService.getToken(),
     });
 
-    return this.httpClient.post(this.orderPlaceURL, orderInfo, { headers });
+    return this.httpClient.post(this.orderURL, orderInfo, { headers });
   }
 
-  getUserOrders() {
+  changeStatus(data: {status: string}, orderId: string) {
     let headers = new HttpHeaders({
       authorization: this.userService.getToken(),
     });
 
-    return this.httpClient.get(this.userAllOrdersUrl, { headers }).pipe(
+    return this.httpClient.patch(this.orderURL + '/' + orderId, data, { headers });
+  }
+
+  getUserOrders(all?: boolean) {
+    let url = this.orderURL;
+    if (all) {
+      url = url + '?all=true';
+    }
+
+    let headers = new HttpHeaders({
+      authorization: this.userService.getToken(),
+    });
+
+    return this.httpClient.get(url, { headers }).pipe(
       map((result: { count: number; orders: Order[] }) => {
         return result.orders;
       })
     );
+  }
+
+  getAdminOrders() {
+    return this.getUserOrders(true);
   }
 }
 
