@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserService {
   private userSignupUrl = 'http://localhost/api/users/signup';
+  private getAllUsersURL = 'http://localhost/api/users';
   private userLoginUrl = 'http://localhost/api/users/login';
   private isAdminUrl = 'http://localhost/api/users/is-admin';
 
@@ -50,6 +51,17 @@ export class UserService {
     return this.http.post(this.userSignupUrl, user).pipe(
       map((result) => {
         return <{ message: string }>result;
+      })
+    );
+  }
+
+  getAllUsers() {
+    let headers = new HttpHeaders({
+      'authorization': this.getToken()
+    })
+    return this.http.get(this.getAllUsersURL, {headers}).pipe(
+      map((result: {users: User[]}) => {
+        return result.users;
       })
     );
   }
