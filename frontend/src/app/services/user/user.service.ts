@@ -36,6 +36,14 @@ export class UserService {
     return localStorage.getItem('token') ? localStorage.getItem('token') : '';
   }
 
+  isLoggedIn() {
+    if (this.getToken() != '') {
+      return true;
+    }
+
+    return false;
+  }
+
   isAdmin() {
     let headers = new HttpHeaders({
       authorization: this.getToken(),
@@ -57,10 +65,10 @@ export class UserService {
 
   getAllUsers() {
     let headers = new HttpHeaders({
-      'authorization': this.getToken()
-    })
-    return this.http.get(this.getAllUsersURL, {headers}).pipe(
-      map((result: {users: User[]}) => {
+      authorization: this.getToken(),
+    });
+    return this.http.get(this.getAllUsersURL, { headers }).pipe(
+      map((result: { users: User[] }) => {
         return result.users;
       })
     );

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserAuthGuardService } from './auth-guard/user-auth-guard.service';
 import { AdminCustomersComponent } from './components/admin/admin-customers/admin-customers.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
@@ -17,18 +18,25 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [UserAuthGuardService]
   },
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [UserAuthGuardService]
+
   },
   {
     path: 'orders',
     component: UserOrdersComponent,
+    canActivate: [UserAuthGuardService]
+
   },
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [UserAuthGuardService]
+
   },
   {
     path: 'login',
@@ -41,6 +49,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminHomeComponent,
+    canActivate: [UserAuthGuardService],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {
