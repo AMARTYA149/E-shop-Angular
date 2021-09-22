@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -12,12 +12,22 @@ export class LoginComponent implements OnInit {
   form: HTMLFormElement;
   error: string;
   success: string;
-  constructor(private userService: UserService, private router: Router) {}
+  returnUrl: any;
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: ParamMap) => {
+      this.returnUrl = params['returnUrl'];
+    })
+  }
 
   navigateToHomepage() {
-    this.router.navigate(['']);
+    let url = this.returnUrl ? this.returnUrl : '/';
+    this.router.navigateByUrl(url);
   }
 
   login(event: Event) {

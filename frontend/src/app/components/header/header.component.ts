@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
       next: (event) => {
         if (event instanceof NavigationStart) {
           let url = (<NavigationStart>event).url;
-          this.isAdminUrl = url.includes('admin');
+          this.isAdminUrl = url.includes('/admin');
         }
       },
     });

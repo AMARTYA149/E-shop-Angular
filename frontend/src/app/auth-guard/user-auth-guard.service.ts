@@ -17,10 +17,13 @@ export class UserAuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let flag = false;
 
-    if(this.userService.isLoggedIn()){
+    if (this.userService.isLoggedIn()) {
       flag = true;
     } else {
-      this.router.navigate(['login']);
+      let currentUrl = state.url;
+      this.router.navigate(['login'], {
+        queryParams: { returnUrl: currentUrl },
+      });
     }
     return flag;
   }

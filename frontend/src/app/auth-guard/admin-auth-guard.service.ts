@@ -20,9 +20,11 @@ export class AdminAuthGuardService implements CanActivate {
       map((result) => {
         if (!result) {
           console.log('You are not a admin');
-          this.router.navigate(['']);
+          this.router.navigate([''], {
+            queryParams: { returnUrl: state.url },
+          });
         }
-        return result; 
+        return result;
       })
     );
   }
