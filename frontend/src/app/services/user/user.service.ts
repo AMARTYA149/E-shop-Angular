@@ -8,10 +8,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private userSignupUrl = 'http://localhost/api/users/signup';
-  private getAllUsersURL = 'http://localhost/api/users';
-  private userLoginUrl = 'http://localhost/api/users/login';
-  private isAdminUrl = 'http://localhost/api/users/is-admin';
+  private userSignupUrl = '/api/users/signup';
+  private getAllUsersURL = '/api/users';
+  private userLoginUrl = '/api/users/login';
+  private isAdminUrl = '/api/users/is-admin';
 
   private _loginObservable: BehaviorSubject<Object>;
 

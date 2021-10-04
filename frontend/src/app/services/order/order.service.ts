@@ -8,7 +8,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class OrderService {
-  orderURL = 'http://localhost/api/orders';
+  orderURL = '/api/orders';
 
   constructor(
     private httpClient: HttpClient,

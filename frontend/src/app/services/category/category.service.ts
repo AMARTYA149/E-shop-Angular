@@ -8,7 +8,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class CategoryService {
-  categoryUrl = 'http://localhost/api/categories';
+  categoryUrl = '/api/categories';
   constructor(private http: HttpClient, private userService: UserService) {}
 
   getAllCategories() {
