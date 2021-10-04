@@ -164,7 +164,7 @@ exports.getLast30DaysRegisteredUser = async function() {
 
         ]
     ).then(r => {
-        return r[0].userCount
+        return r[0]
     })
 }
 
