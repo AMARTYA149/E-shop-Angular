@@ -206,7 +206,7 @@ async function getLast30DaysOrdersAmount() {
             }
         ]
     ).then(r => {
-        return r[0].totalAmount
+        return r.totalAmount
     })
 }
 
@@ -231,7 +231,7 @@ async function getLast30DaysOrderCount() {
     ).then(r => {
         console.log(r);
 
-        return r[0].orderCount
+        return r.orderCount
     })
 }
 async function getTotalOrdersCount() {
