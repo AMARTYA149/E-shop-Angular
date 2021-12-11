@@ -48,7 +48,7 @@ export class UserService {
     let headers = new HttpHeaders({
       authorization: this.getToken(),
     });
-    return this.http.get(this.isAdminUrl, { headers }).pipe(
+    return this.http.get(this.isAdminUrl).pipe(
       map((result) => {
         return <boolean>result;
       })
@@ -64,10 +64,7 @@ export class UserService {
   }
 
   getAllUsers() {
-    let headers = new HttpHeaders({
-      authorization: this.getToken(),
-    });
-    return this.http.get(this.getAllUsersURL, { headers }).pipe(
+    return this.http.get(this.getAllUsersURL).pipe(
       map((result: { users: User[] }) => {
         return result.users;
       })

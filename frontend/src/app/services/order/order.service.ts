@@ -16,19 +16,15 @@ export class OrderService {
   ) {}
 
   placeOrder(orderInfo: OrderInfo) {
-    let headers = new HttpHeaders({
-      authorization: this.userService.getToken(),
-    });
+   
 
-    return this.httpClient.post(this.orderURL, orderInfo, { headers });
+    return this.httpClient.post(this.orderURL, orderInfo);
   }
 
   changeStatus(data: {status: string}, orderId: string) {
-    let headers = new HttpHeaders({
-      authorization: this.userService.getToken(),
-    });
+   
 
-    return this.httpClient.patch(this.orderURL + '/' + orderId, data, { headers });
+    return this.httpClient.patch(this.orderURL + '/' + orderId, data);
   }
 
   getUserOrders(all?: boolean) {
@@ -37,11 +33,9 @@ export class OrderService {
       url = url + '?all=true';
     }
 
-    let headers = new HttpHeaders({
-      authorization: this.userService.getToken(),
-    });
+   
 
-    return this.httpClient.get(url, { headers }).pipe(
+    return this.httpClient.get(url).pipe(
       map((result: { count: number; orders: Order[] }) => {
         return result.orders;
       })
