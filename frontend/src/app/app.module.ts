@@ -26,6 +26,7 @@ import { AdminDashboardCardComponent } from './components/admin/admin-dashboard-
 import { HeaderInterceptorService } from './interceptor/header-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatProgressBarModule,
     // ChartsModule,
   ],
   providers: [

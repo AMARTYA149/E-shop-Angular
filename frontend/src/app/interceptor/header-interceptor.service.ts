@@ -8,8 +8,9 @@ import {
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, finalize, map } from 'rxjs/operators';
 import { NotificationService } from '../services/notification/notification.service';
+import { ProgressService } from '../services/progress/progress.service';
 import { UserService } from '../services/user/user.service';
 
 @Injectable({
@@ -19,12 +20,15 @@ export class HeaderInterceptorService implements HttpInterceptor {
   constructor(
     private userService: UserService,
     private message: NotificationService,
-    private router: Router
+    private router: Router,
+    private loader: ProgressService
   ) {}
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    this.loader.show();
     let header = req.headers.set('authorization', this.userService.getToken());
     let r = req.clone({
       headers: header,
@@ -36,6 +40,9 @@ export class HeaderInterceptorService implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         this.showProperMessage(err);
         return throwError(err);
+      }),
+      finalize(() => {
+        this.loader.hide();
       })
     );
   }
@@ -58,8 +65,6 @@ export class HeaderInterceptorService implements HttpInterceptor {
           returnUrl: this.router.url,
         },
       });
-
-      return;
     }
   }
 }
