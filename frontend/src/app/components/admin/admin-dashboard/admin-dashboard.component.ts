@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SummaryServiceService } from 'src/app/services/summary/summary-service.service';
-import { Summary } from 'src/app/models/summary';
+import { SummaryServiceService } from 'src/app/shared/services/summary/summary-service.service';
+import { Summary } from 'src/app/shared/models/summary';
 // import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 // import { Label } from 'ng2-charts';
 // import * as pluginDataLabels from 'chartjs-plugin-datalabels';

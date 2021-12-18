@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminAuthGuardService } from './auth-guard/admin-auth-guard.service';
-import { UserAuthGuardService } from './auth-guard/user-auth-guard.service';
+import { AdminAuthGuardService } from 'src/app/shared/auth-guard/admin-auth-guard.service';
+import { UserAuthGuardService } from 'src/app/shared/auth-guard/user-auth-guard.service';
 import { AdminCustomersComponent } from './components/admin/admin-customers/admin-customers.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';

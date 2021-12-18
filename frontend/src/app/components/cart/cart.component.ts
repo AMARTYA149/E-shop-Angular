@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { forkJoin, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Product } from 'src/app/models/product';
-import { CartService } from 'src/app/services/cart/cart.service';
+import { Product } from 'src/app/shared/models/product';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 import {
   OrderInfo,
   OrderService,
   ProductInfo,
-} from 'src/app/services/order/order.service';
-import { ProductService } from 'src/app/services/product/product.service';
+} from 'src/app/shared/services/order/order.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 interface CartItem {
   product: Product;

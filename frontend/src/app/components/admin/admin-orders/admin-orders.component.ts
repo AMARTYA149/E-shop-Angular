@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
-import { Order } from 'src/app/models/order';
-import { OrderService } from 'src/app/services/order/order.service';
+import { Order } from 'src/app/shared/models/order';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-admin-orders',

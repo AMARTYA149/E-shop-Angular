@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
-import { CartService } from 'src/app/services/cart/cart.service';
+import { Product } from 'src/app/shared/models/product';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-product-quantity',

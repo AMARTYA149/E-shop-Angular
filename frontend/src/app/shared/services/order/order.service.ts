@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Order } from 'src/app/models/order';
+import { Order } from 'src/app/shared/models/order';
 import { UserService } from '../user/user.service';
 
 @Injectable({

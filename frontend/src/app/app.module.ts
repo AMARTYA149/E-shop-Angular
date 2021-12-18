@@ -23,7 +23,7 @@ import { AdminProductsComponent } from './components/admin/admin-products/admin-
 import { AdminNewProductComponent } from './components/admin/admin-new-product/admin-new-product.component';
 import { AdminCustomersComponent } from './components/admin/admin-customers/admin-customers.component';
 import { AdminDashboardCardComponent } from './components/admin/admin-dashboard-card/admin-dashboard-card.component';
-import { HeaderInterceptorService } from './interceptor/header-interceptor.service';
+import { HeaderInterceptorService } from 'src/app/shared/interceptor/header-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';

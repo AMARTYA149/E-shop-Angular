@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
-import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/shared/models/user';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-signup',

@@ -9,9 +9,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize, map } from 'rxjs/operators';
-import { NotificationService } from '../services/notification/notification.service';
-import { ProgressService } from '../services/progress/progress.service';
-import { UserService } from '../services/user/user.service';
+import { NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { ProgressService } from 'src/app/shared/services/progress/progress.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Injectable({
   providedIn: 'root',

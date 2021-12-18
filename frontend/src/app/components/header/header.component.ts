@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { CartService } from 'src/app/services/cart/cart.service';
-import { UserService } from 'src/app/services/user/user.service';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-header',

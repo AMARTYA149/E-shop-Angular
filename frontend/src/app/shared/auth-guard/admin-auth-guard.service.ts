@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { UserService } from '../services/user/user.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Injectable({
   providedIn: 'root',

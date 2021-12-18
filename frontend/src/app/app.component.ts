@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProgressService } from './services/progress/progress.service';
+import { ProgressService } from 'src/app/shared/services/progress/progress.service';
 
 @Component({
   selector: 'app-root',

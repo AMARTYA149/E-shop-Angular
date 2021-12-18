@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
-import { Category } from 'src/app/models/category';
-import { Product } from 'src/app/models/product';
-import { CategoryService } from 'src/app/services/category/category.service';
-import { ProductService } from 'src/app/services/product/product.service';
+import { Category } from 'src/app/shared/models/category';
+import { Product } from 'src/app/shared/models/product';
+import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-admin-products',
