@@ -8,12 +8,12 @@ import { AdminHomeComponent } from 'src/app/admin/components/admin/admin-home/ad
 import { AdminNewProductComponent } from 'src/app/admin/components/admin/admin-new-product/admin-new-product.component';
 import { AdminOrdersComponent } from 'src/app/admin/components/admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from 'src/app/admin/components/admin/admin-products/admin-products.component';
-import { CartComponent } from './components/cart/cart.component';
+import { CartComponent } from 'src/app/user/components/cart/cart.component';
 import { HomeComponent } from 'src/app/core/components/home/home.component';
 import { LoginComponent } from 'src/app/core/components/login/login.component';
 import { SignupComponent } from 'src/app/core/components/signup/signup.component';
-import { StoreComponent } from './components/store/store.component';
-import { UserOrdersComponent } from './components/user-orders/user-orders.component';
+import { StoreComponent } from 'src/app/user/components/store/store.component';
+import { UserOrdersComponent } from 'src/app/user/components/user-orders/user-orders.component';
 
 const routes: Routes = [
   {
