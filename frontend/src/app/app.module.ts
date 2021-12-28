@@ -18,29 +18,18 @@ import { HomeComponent } from 'src/app/core/components/home/home.component';
 import { LoginComponent } from 'src/app/core/components/login/login.component';
 import { SignupComponent } from 'src/app/core/components/signup/signup.component';
 import { HeaderInterceptorService } from 'src/app/shared/interceptor/header-interceptor.service';
-import { CartComponent } from 'src/app/user/components/cart/cart.component';
-import { FilterComponent } from 'src/app/user/components/filter/filter.component';
-import { ProductCardComponent } from 'src/app/user/components/product-card/product-card.component';
-import { ProductQuantityComponent } from 'src/app/user/components/product-quantity/product-quantity.component';
-import { StoreComponent } from 'src/app/user/components/store/store.component';
-import { UserOrdersComponent } from 'src/app/user/components/user-orders/user-orders.component';
 // import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserModule } from './user/user.module';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    StoreComponent,
-    FilterComponent,
-    ProductCardComponent,
-    CartComponent,
-    UserOrdersComponent,
     LoginComponent,
     SignupComponent,
-    ProductQuantityComponent,
     AdminHomeComponent,
     AdminDashboardComponent,
     AdminOrdersComponent,
@@ -57,6 +46,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    UserModule,
     // ChartsModule,
   ],
   providers: [
