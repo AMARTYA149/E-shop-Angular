@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminCustomersComponent } from './components/admin/admin-customers/admin-customers.component';
 import { AdminDashboardCardComponent } from './components/admin/admin-dashboard-card/admin-dashboard-card.component';
@@ -20,7 +20,7 @@ import { AdminProductsComponent } from './components/admin/admin-products/admin-
     AdminDashboardCardComponent,
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     AdminRoutingModule,
     // ChartsModule
   ],

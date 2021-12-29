@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { CartComponent } from './components/cart/cart.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -17,7 +17,7 @@ import { UserRoutingModule } from './user-routing.module';
     UserOrdersComponent,
     ProductQuantityComponent,
   ],
-  imports: [CommonModule, UserRoutingModule],
+  imports: [SharedModule, UserRoutingModule],
   exports: [FilterComponent, StoreComponent],
 })
 export class UserModule {}
